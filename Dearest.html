@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NF-SROS bemutató</title>
+</head>
+<body>
+    <div class="sav-keret">
+        <div class="sav-ce"></div>
+        <div class="sav-asm"></div>
+    </div>
+    <h1>Netfloor Searee 1.0 (NF-SROS)</h1>
+    <p>Ez az OS egy 9 éves zsenitől készült. 97.8% C nyelv és 2.2% Assembly.</p>
+    <h3>QEMU Parancs.</h3>
+    <h4>MSYS2 MINGW kód:</h4>
+    <div class="MSYS2">
+        <h1>MSYS2 MINGW64</h1>
+        <code id="msysmingwk">pacman -S mingw-w64-x86_64-qemu</code>
+    </div>
+    <button onclick="masoli() "class="copy-btn">Másolás</button>
+    <h4>Powershell kód:</h4>
+    <div class="Powershell">
+        <h1>Windows Powershell</h1>
+        <code id="ps-kod">qemu-system-i386 -kernel searee_os.bin</code>
+    </div>
+    <!-- Ez a gomb fogja meghívni a masolas parancsot, ha rákattintanak -->
+    <button onclick="masol() "class="copy-btn">Másolás</button>
+
+    <a href="index.html"><button>Főoldal</button></a>
+</body>
+<style>
+    body {
+        background-color: black;
+        color: white;
+        font-family: monospace;
+        text-align: center;
+    }
+    button {
+        width: 2cm;
+        height: 1cm;
+    }
+    div {
+        text-align: center;
+    }
+    div {
+        text-align: center;
+    }
+
+    .sav-keret {
+        background-color: #555; /* Egy kicsit sötétebb szürke, hogy látsszon */
+        width: 300px;
+        height: 20px;
+        margin: 0 auto; /* Ez a trükk rakja teljesen középre a sávot! */
+    }
+
+    .sav-ce {
+        width: 97.8%;
+        background-color: aqua;
+        height: 100%; /* Ez kell, hogy kitöltse a keret magasságát */
+        float: left;  /* Ez tapasztja a sáv bal oldalához */
+    }
+
+    .sav-asm {
+        width: 2.2%;
+        background-color: purple; /* Adj neki egy másik színt (pl. lila), különben nem látod a szürke kerettől! */
+        height: 100%;
+        float: left;
+    }
+    .Powershell {
+        background-color: #111;
+        color: #00ff00;
+        text-align: left;
+        padding: 10px;
+    }
+    .MSYS2 {
+        background-color: #111;
+        color: blue;
+        text-align: left;
+        padding: 10px;
+    }
+    .copy-btn {
+        background-color: #333;
+        color: #00ff00; /* Zöld betű, mint a terminál */
+        border: 1px solid #00ff00;
+        cursor: pointer;
+        margin-top: 5px;
+        height: 30px;
+        width: 80px;
+    }
+
+    .copy-btn:hover {
+        background-color: #00ff00;
+        color: black; /* Megcserélődnek a színek, ha ráfutsz az egérrel */
+    }
+</style>
+<script>
+function masoli() {
+    var kodSzovegi = document.getElementById("msysmingwk").innerText;
+    navigator.clipboard.writeText(kodSzovegi);
+    alert("Kód kimásolva a vágólapra!");
+}
+function masol() {
+    // 1. Megkeressük a képernyőn a kódot az ID alapján
+    var kodSzoveg = document.getElementById("ps-kod").innerText;
+
+    // 2. Megkérjük a böngészőt, hogy mentse el a vágólapra (clipboard)
+    navigator.clipboard.writeText(kodSzoveg);
+
+    // 3. (Opcionális) Értesítjük a felhasználót, hogy sikerült
+    alert("Kód kimásolva a vágólapra!");
+}
+</script>
+
+</html>

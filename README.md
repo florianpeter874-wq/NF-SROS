@@ -22,6 +22,9 @@ To test and run this operating system locally, follow these steps:
    git clone https://github.com/florianpeter874-wq/NF-SROS.git
    ```
 2. `Run the bin file with qemu.`
+3. ```bash
+   qemu-system-i386 -kernel searee_os.bin
+   ```
 
 ## 📝 Verification Note
 The source code contained within this repository is fully open for technical review and security audit by independent computer science experts, software engineers, and the Guinness World Records adjudicating team.
